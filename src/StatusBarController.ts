@@ -18,6 +18,7 @@ export class StatusBarController implements IStatusBarController, Disposable {
 	setup(): void {
 		this.listenStatusbarItem = window.createStatusBarItem(StatusBarAlignment.Left, 100);
 		this.listenStatusbarItem.text = "$(feedback) Listen!";
+		this.listenStatusbarItem.command = "top-secret.listen";
 		this.listenStatusbarItem.show();
 		console.info("Setup of the StatusBar has finished.");
 	}
