@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import { window, Disposable, StatusBarAlignment, StatusBarItem, ExtensionContext } from 'vscode';
+import { ISpeechRescognitionService } from './SpeechRecognitionService';
 
 export interface IStatusBarController {
 	setup(): void;
@@ -10,7 +11,7 @@ export class StatusBarController implements IStatusBarController, Disposable {
 
 	private listenStatusbarItem?: StatusBarItem;
 
-	constructor(private context: ExtensionContext) {
+	constructor(private speechRecognitionService: ISpeechRescognitionService) {
 
 	}
 

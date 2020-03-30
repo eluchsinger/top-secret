@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { StatusBarController } from './StatusbarController';
+import { SpeechRecognitionService } from './SpeechRecognitionService';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -11,7 +12,8 @@ export function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "top-secret" is now active!');
 
-	const statusBarController = new StatusBarController(context);
+	const speechRecognitionService = new SpeechRecognitionService();
+	const statusBarController = new StatusBarController(speechRecognitionService);
 	statusBarController.setup();
 	context.subscriptions.push(statusBarController);
 
