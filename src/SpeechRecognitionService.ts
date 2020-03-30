@@ -24,8 +24,11 @@ export class SpeechRecognitionService implements ISpeechRescognitionService {
 		const promise: Promise<string> = new Promise<string>((resolve, reject) => {
 			this.recognizer.recognizeOnceAsync((speechRecognitionResult) => {
 				const recognizedText = speechRecognitionResult.text;
+				this.recognizer.close();
 				resolve(recognizedText);
 			}, recognitionError => {
+				this.recognizer.close();
+				console.error("Failed using the recognizer: " + recognitionError);
 				reject(new Error(recognitionError));
 			});
 		});
